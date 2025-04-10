@@ -9,16 +9,8 @@ function addLead() {
         return
     }
     myLeads.push(inputEl.value)
+    ulEl.innerHTML += "<li>" + inputEl.value + "</li>"
     inputEl.value = ''
-    renderLeads()
-}
-
-function renderLeads() {
-    let listItems = ""
-    for (let i=0; i < myLeads.length; i++) {
-        listItems += '<li>' + myLeads[i] + '</li>'
-    }
-    leadsList.innerHTML = listItems
 }
 
 inputBtn.addEventListener('click', addLead);
