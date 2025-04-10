@@ -9,7 +9,8 @@ function addLead() {
         return
     }
     myLeads.push(inputEl.value)
-    ulEl.innerHTML += "<li>" + inputEl.value + "</li>"
+    let newLead = `<a href="${inputEl.value}" target="_blank">${inputEl.value}</a>`
+    leadsList.innerHTML += "<li>" + newLead + "</li>"
     inputEl.value = ''
 }
 
