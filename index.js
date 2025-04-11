@@ -1,20 +1,17 @@
 let myLeads = []
-let leadsList = document.getElementById('leads-list')
-
-function renderList(input) {
-    for(let i=0; i < myLeads.length; i++) {
-        const newLi = document.createElement("li")
-        const newContent = document.createTextNode(`${input}`)
-        newLi.appendChild(newContent)
-        leadsList.appendChild(newLi)
-    }
-}
+const inputEl = document.getElementById('input-el')
+const inputBtn = document.getElementById('input-btn')
+const leadsList = document.getElementById('leads-list')
 
 function addLead() {
-    console.log('clicked')
-    const inputEl = document.getElementById('input-el')
+    if (!inputEl.value) {
+        console.error('Field is empty!')
+        return
+    }
     myLeads.push(inputEl.value)
-    renderList(inputEl.value)
+    let newLead = `<a href="${inputEl.value}" target="_blank">${inputEl.value}</a>`
+    leadsList.innerHTML += "<li>" + newLead + "</li>"
+    inputEl.value = ''
 }
 
-document.getElementById('input-btn').addEventListener('click', addLead);
+inputBtn.addEventListener('click', addLead);
