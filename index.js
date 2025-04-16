@@ -1,8 +1,5 @@
 let myLeads = []
 let storedLeads = JSON.parse(localStorage.getItem('myLeads'))
-const tabs = [
-    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
-]
 
 const inputEl = document.getElementById('input-el')
 const inputBtn = document.getElementById('input-btn')
@@ -35,8 +32,14 @@ function addLead(local) {
     localStorage.setItem('myLeads', JSON.stringify(local))
 }
 
-function logTabs() {
-    console.log(tabs[0].url)
+function saveTab(local) {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        local.push(tabs[0].url)
+        let newLink = `<a href="${tabs[0].url}" target="_blank">${tabs[0].url}</a>`
+        leadsList.innerHTML += "<li>" + newLink + "</li>"
+        inputEl.value = ''
+        localStorage.setItem('myLeads', JSON.stringify(local))
+    })
 }
 
 function clearLeads(local) {
@@ -50,5 +53,5 @@ function clearLeads(local) {
 }
 
 inputBtn.addEventListener('click', () => addLead(myLeads));
-tabBtn.addEventListener('click', () => logTabs());
+tabBtn.addEventListener('click', () => saveTab(myLeads));
 deleteBtn.addEventListener('click', () => clearLeads(myLeads));
