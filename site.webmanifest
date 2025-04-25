@@ -1,0 +1,20 @@
+{
+    "name": "",
+    "short_name": "",
+    "icons": 
+        [
+            {
+                "src": "",
+                "sizes": "",
+                "type": ""
+            },
+            {
+                "src": "",
+                "sizes": "",
+                "type": ""
+            }
+        ],
+    "theme_color": "ffffff",
+    "background_color": "ffffff",
+    "display": "standalone"
+}
